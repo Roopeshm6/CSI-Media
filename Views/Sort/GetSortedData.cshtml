@@ -1,0 +1,71 @@
+﻿@model List<SortData>
+
+<button class="loginRegister__btn btn btn--secondary" id="downloadButton">Export to CSV</button>
+<button class="loginRegister__btn btn btn--secondary" id="downloadjSon">Export to JSON</button>
+
+<table>
+    <tr>
+        <th>UserInput</th>
+        <th>Sorted Numbers</th>
+        <th>Sorted Direction</th>
+        <th>Sort Time</th>
+    </tr>
+
+    @foreach (var sort in Model)
+    {
+        <tr>
+            <td>@sort.UserInput</td>
+            <td>@sort.SortedNumbers</td>
+            <td>@sort.SortDirection</td>
+            <td>@sort.SortTime</td>
+        </tr>
+    }
+</table>
+<script>
+    document.getElementById("downloadButton").addEventListener("click", function () {
+        window.location.href = "/Sort/DownloadCsv";
+    });
+    document.getElementById("downloadjSon").addEventListener("click", function () {
+        window.location.href = "/Sort/DownloadJson";
+    });
+</script>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    th {
+        background-color: #ffe600;
+        color: black;
+    }
+
+    .btn {
+        color: white;
+        background: #088F8F;
+        border: 0;
+        outline: none;
+        border-radius: 2px;
+        font-family: Noto Sans,Arial,sans-serif;
+        font-size: 1rem;
+        height: 38px;
+        line-height: 28px;
+        padding: 5px 20px;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid transparent;
+        margin-bottom: 5px;
+        margin-right: 50px;
+    }
+</style>

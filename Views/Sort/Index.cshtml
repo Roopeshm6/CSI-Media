@@ -1,0 +1,150 @@
+﻿@model SortData
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <h3>User Details</h3>
+                <div class="d-flex justify-content-end social_icon">
+                    <span><i class="fab fa-facebook-square"></i></span>
+                    <span><i class="fab fa-google-plus-square"></i></span>
+                    <span><i class="fab fa-twitter-square"></i></span>
+                </div>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Sort", FormMethod.Post))
+                {
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <p>Name:</p>
+                            <input asp-for="Name" placeholder="Enter Name" id="numbers" name="userInput" class="form-control" required />
+                        </div>
+                    </div>
+                    <input type="radio" id="ascending" name="sortDirection" value="Ascending" checked>
+                    <label for="ascending">Ascending</label>
+                    <input type="radio" id="descending" name="sortDirection" value="Descending">
+                    <label for="descending">Descending</label><br />
+                    <div class="form-group">
+                        <button class="loginRegister__btn btn btn--secondary">Submit</button>
+                    </div>
+                    <!--<div class="input-group form-group">
+            <div class="input-group-prepend">
+                <p>Name:</p>
+                <input asp-for="Name" placeholder="Enter Name" id="name" name="name" class="form-control" onkeypress="validateName(event)" required />
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <p>Date of Birth:</p>
+                <input asp-for="DateOfBirth" class="form-control" id="dob" type="date" name="dob" onkeypress="validateDateOfBirth(event)" required />
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <p>Phone No.:</p>
+                <input asp-for="PhoneNumber" placeholder="Enter Phone No." id="phoneNo" name="phoneNo" class="form-control" pattern="\d{10}" onkeypress="validatePhoneNumber(event)" required />
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <p>Email:</p>
+                <input asp-for="Email" id="Email" placeholder="Enter Email" class="form-control" name="email" type="email" onkeypress="validateEmail(event)" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="loginRegister__btn btn btn--secondary">Submit</button>
+        </div>-->}
+            </div>
+            <!--<div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    Don't have an account?<a href="#">Sign Up</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="#">Forgot your password?</a>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function validateName(event) {
+        // Your validation logic for Name goes here
+        var validation = /^[a-zA-Z\s'-]+$/.test(event.key);
+        console.log(validation);
+        var phoneNumberInput = document.getElementById('name');
+        // Your validation logic for Phone Number goes here
+        if (validation == false) {
+            phoneNumberInput.style.border = '1px solid red';
+        }
+        if (validation == true) {
+            phoneNumberInput.style.border = '1px solid #ced4da';
+        }
+    }
+
+    function validateDateOfBirth(event) {
+        // Your validation logic for Date of Birth goes here
+    }
+
+    function validatePhoneNumber(event) {
+        // Your validation logic for Phone Number goes here
+        var validation = /^\d+$/.test(event.key);
+        console.log(validation);
+        var phoneNumberInput = document.getElementById('phoneNo');
+        // Your validation logic for Phone Number goes here
+        if (validation == false) {
+            phoneNumberInput.style.border = '1px solid red';
+        }
+        if (validation == true) {
+            phoneNumberInput.style.border = '1px solid #ced4da';
+        }
+    }
+
+    function validateEmail(event) {
+        var val = event.target.value;
+        var key = event.key;
+        var email = val + key;
+        var validation = /^[^\s&#64;]+&#64[^\s&#64;]+\.[^\s&#64;]+$/.test(email);
+        console.log(validation);
+        var phoneNumberInput = document.getElementById('email');
+        // Your validation logic for Phone Number goes here
+        if (validation == false) {
+            phoneNumberInput.style.border = '1px solid red';
+        }
+        if (validation == true) {
+            phoneNumberInput.style.border = '1px solid #ced4da';
+        }
+    }
+</script>
+
+<style>
+    .btn {
+        color: #fff;
+        background: #ffe600;
+        border: 0;
+        outline: none;
+        border-radius: 2px;
+        font-family: Noto Sans,Arial,sans-serif;
+        font-size: 1rem;
+        height: 38px;
+        line-height: 28px;
+        padding: 5px 20px;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid transparent;
+        margin-top: 5px;
+        margin-left: 50px;
+    }
+</style>
